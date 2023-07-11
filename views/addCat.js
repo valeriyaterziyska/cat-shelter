@@ -1,3 +1,6 @@
+// const breeds = require('../breeds.json');
+
+module.exports = (breeds) => `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +17,9 @@
     <header>
         <nav>
             <ul class="navigation">
-                <li><a href="">Home Page</a></li>
-                <li><a href="">Add Breed</a></li>
-                <li><a href="">Add Cat</a></li>
+                <li><a href="/">Home Page</a></li>
+                <li><a href="/cats/add-breed">Add Breed</a></li>
+                <li><a href="/cats/add-cat">Add Cat</a></li>
             </ul>
         </nav>
         <h1>Cat Shelter</h1>
@@ -32,9 +35,10 @@
             <input name="upload" type="file" id="image">
             <label for="group">Breed</label>
             <select name="breed" id="group">
-                <option value="Fluffy Cat">Fluffy Cat</option>
-				<option value="Fluffy Cat">Fluffy Cat</option>
-				<option value="Fluffy Cat">Fluffy Cat</option>
+                ${breeds.map(x => `
+                    <option value="${x.breedName}">${x.breedName}</option>
+                
+                `).join('')}
             </select>
             <button type="submit">Add Cat</button>
         </form>
@@ -42,3 +46,4 @@
 </body>
 
 </html>
+`;
